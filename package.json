@@ -1,0 +1,15 @@
+{
+  "name": "loginwithauth",
+  "version": "1.0.0",
+  "description": "Login with Authorization connected to MySql Database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Raymond Cato",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "mysql": "^2.18.1"
+  }
+}
