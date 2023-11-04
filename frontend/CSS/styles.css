@@ -41,6 +41,17 @@ form {
     display: flex;
 }
 
+#big-red-button {
+    width: 100%;
+    color: #FF0000;
+    display: flex;
+}
+
+#big-red-button:hover {
+    background-color: #FF0000;
+    color: #fff;
+}
+
 input[type="text"],
 input[type="email"],
 input[type="password"] {

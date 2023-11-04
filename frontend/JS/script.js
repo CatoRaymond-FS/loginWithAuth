@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const signUpForm = document.getElementById('signup-form');
   const loginForm = document.getElementById('login-form');
   const successMessage = document.getElementById('success-message');
+  const bigRedButton = document.getElementById('big-red-button');
 
   signUpForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -72,4 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('An error occurred during login:', error);
     }
   };
+
+    bigRedButton.addEventListener('click', async (e) => {
+    e.preventDefault();
+    window.location.href = "https://leekspin.com/";
+    });
+  
+
 });
