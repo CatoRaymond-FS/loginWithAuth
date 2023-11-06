@@ -46,7 +46,7 @@ This is a simple user authentication system developed as a portfolio project. It
 - The project includes basic error handling and feedback for user actions.
 - Detailed error messages are provided in the API responses.
 
-## Scalability 
+## Extensibility
 This project can be extended in several ways, such as:
 
 - Implementing password reset functionality.
