@@ -1,0 +1,145 @@
+# User Authentication System Documentation
+
+## Overview
+This documentation provides a detailed guide for developers implementing a basic user authentication system. The system supports user registration with a username, email, and password, as well as user login with email and password. It employs secure password hashing and is built using the following technologies:
+
+- **Node.js**
+- **Express.js**
+- **MySQL** (or another preferred relational database)
+- **Bcrypt** for secure password handling
+
+The system’s functionality is encapsulated within the `auth.js` file, demonstrating foundational skills in web development and security practices. This project also offers opportunities for extensibility, making it adaptable for future enhancements.
+
+---
+
+## Features
+1. **User Signup**:
+   - Inputs: `username`, `email`, `password`.
+   - Validates and securely hashes passwords before storing them in the database.
+   - Stores user details in the database.
+
+2. **User Login**:
+   - Inputs: `email`, `password`.
+   - Verifies credentials against stored user data.
+   - Authenticates users by comparing hashed passwords.
+
+3. **Security Features**:
+   - Utilizes `bcrypt` for password hashing to ensure secure storage.
+   - Incorporates input validation to protect against malformed data submissions.
+
+4. **Extensibility**:
+   - Future features such as password resets, email confirmation, and role-based access control can be easily integrated.
+
+---
+
+## Installation and Setup
+
+### Prerequisites
+Ensure the following software is installed:
+- Node.js (v14 or higher)
+- MySQL or a similar relational database system
+
+### Steps
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/CatoRaymond-FS/loginWithAuth.git
+   cd loginWithAuth
+   ```
+
+2. **Install Dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set Up the Database**
+   - Import the SQL dump file provided (e.g., `databaseDumpFile/dump-file.sql`) to create the required database and tables.
+   - Update the database connection settings in the project (e.g., `config/db.js`).
+
+4. **Start the Server**
+   ```bash
+   cd backend
+   node server.js
+   ```
+
+5. **Access the Application**
+   - Open the `index.html` file in your browser.
+   - Use the interface to sign up or log in.
+
+---
+
+## API Details
+
+### **Route: `/auth.js`**
+
+#### POST `/signup`
+- **Description**: Registers a new user.
+- **Inputs**:
+  - `username` (string): The user’s name.
+  - `email` (string): The user’s email address.
+  - `password` (string): The user’s chosen password.
+- **Process**:
+  1. Validates input fields for completeness and format.
+  2. Hashes the password using `bcrypt`.
+  3. Inserts user data into the database.
+- **Response**:
+  - `201 Created`: User registered successfully.
+  - `400 Bad Request`: Input validation failed.
+  - `500 Internal Server Error`: Database or server issue.
+
+#### POST `/login`
+- **Description**: Authenticates an existing user.
+- **Inputs**:
+  - `email` (string): The user’s email address.
+  - `password` (string): The user’s password.
+- **Process**:
+  1. Validates input fields.
+  2. Checks for the email’s existence in the database.
+  3. Compares the provided password with the stored hashed password.
+- **Response**:
+  - `200 OK`: Login successful.
+  - `401 Unauthorized`: Invalid email or password.
+  - `500 Internal Server Error`: Database or server issue.
+
+---
+
+## Database Schema
+
+### **Users Table**
+| Column     | Type         | Description                |
+|------------|--------------|----------------------------|
+| id         | INT (PK)     | Auto-incremented user ID   |
+| username   | VARCHAR(255) | User’s username            |
+| email      | VARCHAR(255) | User’s email address       |
+| password   | VARCHAR(255) | Hashed password            |
+| created_at | TIMESTAMP    | Record creation timestamp  |
+
+---
+
+## Error Handling
+- Returns descriptive HTTP status codes for various scenarios (e.g., validation errors, server issues).
+- Provides feedback messages in API responses to guide developers.
+
+---
+
+## Security Considerations
+1. **Password Hashing**:
+   - Passwords are hashed with `bcrypt` before storage, using a strong salt factor (e.g., 10).
+
+2. **Input Validation**:
+   - Validates inputs to ensure proper formatting and prevent SQL injection or malformed data.
+
+3. **Error Exposure**:
+   - Limits sensitive error details in API responses to enhance security.
+
+---
+
+## Future Improvements
+- **Token-Based Authentication**: Use JWT for session management and stateless authentication.
+- **Rate Limiting**: Implement to prevent brute force attacks.
+- **Password Recovery**: Add password reset functionality via email.
+- **Security Enhancements**: Integrate CAPTCHA and multi-factor authentication for additional layers of protection.
+
+---
+
+For questions, contributions, or further details, contact the project maintainer or refer to the project’s README on GitHub.
+
